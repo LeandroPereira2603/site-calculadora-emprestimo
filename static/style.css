@@ -1,0 +1,19 @@
+
+
+.output {
+    font-weight: bold;
+}
+
+#payment {
+    text-decoration: underline ; 
+
+}
+
+#graph {
+    border: soid black 1px;
+
+}
+
+th , td {
+    vertical-align: top;
+}
