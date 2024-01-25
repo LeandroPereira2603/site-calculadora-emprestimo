@@ -39,10 +39,9 @@ totalinterest.innerHTML = (( montly*payments)-principal).toFixed(2);
 // Salva a entrada do usuário para que posamos recuperá-la maprocima vez que 
 // ele visitar
 
-save(amount.value,apr.value,years.value,zipcode.value)
-};
+save(amount.value,apr.value,years.value,zipcode.value);
 
-}
+
 
 
 // Anúncio: localiza e exibe financeiras locais, mas ignora erros 
@@ -51,20 +50,24 @@ try{
     // Captura quaisquer erros que ocorram dentro destas chaves 
     getLenders(amount.value, apr.value, years.value,zipcode.value);
 }
-catch(e){
-    /* E igora esses erros */ 
+catch(e){ /* E igora esses erros */ 
     // Por fim , traça o gráfico do aldo devedoor , dos juros e sos pagamentos capital
     Chart(principal,interest,monthly,payments);
+
 }
-else{
+
+}
+
+else {
       // O resultado foi Not-a-Number ou infinito, o que significa
-      // estava incompleta ou era inválida.Apaga qualquer saída exibida a 
+      // estava incompleta ou era inválida.Apaga qualquer saída exibida  
     payment.innerHTML = ""; // Apaga o conteúdo desses elementos
     total.innerHTML =""
     totalinterest.innerHTML ="";
     chart(); // Sem argumentos, apaga o gráfico 
 
 }
+
 
 // Salva a entrada do usuário como propriedades do objeto localStorage. Essas
 // propriedades ainda existirão quando o usuário visitar no futuro
@@ -86,7 +89,7 @@ function dave( amount, apr,years,zipcode){
 // pela primeira vez .
 
 window.onload = function(){
-    
+
     // Se o navegador suporta localStorage e temos alguns dados armazenados 
 
 if ( window.localStorage && localStorage.loan_amount){
@@ -106,7 +109,12 @@ function getLenders(amount, apr, years,zipcode){
 
     // Se o navehador não suporta o objeto XMLHttpRequest, não faz
 if (!window.XMLHttpRequest) return ;
-}
+
+
 
 
 }
+}
+}
+
+
