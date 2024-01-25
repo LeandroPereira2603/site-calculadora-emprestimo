@@ -84,7 +84,9 @@ function dave( amount, apr,years,zipcode){
 
 // Tenta restaurar os campos de entrada automaticamente quando o documento é carregado 
 // pela primeira vez .
+
 window.onload = function(){
+    
     // Se o navegador suporta localStorage e temos alguns dados armazenados 
 
 if ( window.localStorage && localStorage.loan_amount){
@@ -99,7 +101,9 @@ if ( window.localStorage && localStorage.loan_amount){
 // uma lista de links para financeiras locais interessadas em fazer 
 // exemplo não contém uma implementação real desse serviço de busca 
 // se o serviço existissse , essa função funcionaria com ele .
+
 function getLenders(amount, apr, years,zipcode){
+
     // Se o navehador não suporta o objeto XMLHttpRequest, não faz
 if (!window.XMLHttpRequest) return ;
 }
