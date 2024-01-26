@@ -110,10 +110,72 @@ function getLenders(amount, apr, years,zipcode){
     // Se o navehador não suporta o objeto XMLHttpRequest, não faz
 if (!window.XMLHttpRequest) return ;
 
+// Localiza o elemento para exibir a lista de financeiras
+
+var ad = document.getElementById("lenders");
+if(!ad) return; // Encerra se não há pponto de saida 
+// Codifica a entrada do usúario com paramêtros de consulta em um URL
+var url = "getLenders.php" + // Url do serviço mais
+    "?amt=" + encodeURIComponent(amount) +  // dados do usuário na string de consulta 
+
+    "&apr=" + encodeURIComponent(apr) +
+    "&yrs=" + encodeURIComponent(years) +
+    "&zip=" + encodeURIComponent(zipcode);
 
 
+   // Busca o coneúdo  desse URL usando o objeto XMLHttpRequest
+
+   var req = new XMLHttpRequest(); // Inicia um novo pedido
+
+   req.open("GET", url);  // Um pedido GET da HTTP para o url 
+   reqq.send(null);      // Envia o pedido sem corpo 
+
+
+   // Antes de retornar , registra uma função de rotina de tratamento de evento que sera 
+   // chamada em um momento posterior, quandoa resposta do servidor, de HTTP chegar,
+   // Esse tipo de programação assincrona e muito comum em javascript do lado do 
+   // cliente
+   req.onreadystatechange = function (){
+    if ( req.readyState == 4 && req.status == 200){
+        // Se chegamos até aqui , obtivemos uma resposta HTTP válida e completa
+        var response = req.responseText; // Resposta HTTP cpmp string
+        var lenders = JSON.parse(ressponse); //Analisa em um array JS
+        
+        // Converte o array de objetos lender em uma string HTML 
+        var list ="";
+        for(var i = 0;i < lenders.lenght; i++){
+            list += "<li> <a href="+lenders[i].url +">" +
+            lenders[i].name +"</a>";
+        }
+        // Exibe o código HTML no elemento acima.
+        ad.innerHTML = "<ul>" + list +"</ul>";
+    }
+   }
 
 }
+
+// Faz o gráfico do saldo devedor mensaç, dos juros e do capitaç em um elemento <canvas> 
+// da HTML .
+// Se for chamado sem argumentos, basta apagar qualquer gráfico desenhado anteriormente, 
+
+function chart(principal, interest, monthly , payments){
+    var graph = document.getElementById("graph"); // Obtém a marca <canvas>
+    graph.width = graph.width; // Mágica para apagar e redefinir o elemento
+    // canvas
+    // Se chamamossem argumentos ou se esse navegador não suporta
+    // elementos gráficos em um elemento <canvas>, basta retornar agora,
+
+    if (arguments.length == 0 || !graph.getContext) return;
+
+
+    // Obtem o objeto "contexto" de <canvas> que define API de desenho 
+    var g = graph.getContext("2d"); // Todo desenho é feita com esse objeto
+    var width = graph.width, height = graph.height; // Obtém o tamanho da tela de // desenho
+}
+
+
+
+
 }
 }
 
