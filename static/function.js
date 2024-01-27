@@ -135,6 +135,7 @@ var url = "getLenders.php" + // Url do serviço mais
    // chamada em um momento posterior, quandoa resposta do servidor, de HTTP chegar,
    // Esse tipo de programação assincrona e muito comum em javascript do lado do 
    // cliente
+
    req.onreadystatechange = function (){
     if ( req.readyState == 4 && req.status == 200){
         // Se chegamos até aqui , obtivemos uma resposta HTTP válida e completa
@@ -173,6 +174,21 @@ function chart(principal, interest, monthly , payments){
     var width = graph.width, height = graph.height; // Obtém o tamanho da tela de // desenho
 }
 
+// Essas funcões convetem números de pagamento e valores monetários em pixels
+
+function paymentTox(n) { return n * width/payments;}
+function amountToy(a) { return height-(a height/(montly*payments*1.05));}
+
+// Os pagamentos são uma linha de (0,0) a (payments, montly*payments)
+
+g.moveTo(paymentTox(0), amountToy(0)); // Começa no canto inferior esquerdo
+g.lineTo(paymentToX(payment),
+amountToy(montly*payments));
+g.lineTo(paymentToX(payments), amountToy(o));  // Para baixo , até o canto
+
+g.closePath();
+
+)
 
 
 
