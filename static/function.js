@@ -177,7 +177,7 @@ function chart(principal, interest, monthly , payments){
 // Essas funcões convetem números de pagamento e valores monetários em pixels
 
 function paymentTox(n) { return n * width/payments;}
-function amountToy(a) { return height-(a height/(montly*payments*1.05));}
+function amountToy(a) { return height-(a * height /(montly*payments*1.05));}
 
 // Os pagamentos são uma linha de (0,0) a (payments, montly*payments)
 
