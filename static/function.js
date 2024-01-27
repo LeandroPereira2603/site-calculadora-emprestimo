@@ -188,9 +188,6 @@ g.lineTo(paymentToX(payments), amountToy(o));  // Para baixo , até o canto
 
 g.closePath();
 
-)
-
-
 
 }
 }
